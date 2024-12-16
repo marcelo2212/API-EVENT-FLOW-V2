@@ -1,0 +1,8 @@
+"scripts": {
+  "start": "nest start",
+  "start:dev": "nest start --watch",
+  "start:prod": "node dist/main",
+  "build": "nest build",
+  "docker:build": "docker build -t api-event-flow-v2 .",
+  "docker:dev": "docker-compose up --build"
+}

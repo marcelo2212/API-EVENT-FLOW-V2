@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  api-event-flow-v2:
+    build:
+      context: .
+      dockerfile: Dockerfile # ou Dockerfile.dev para desenvolvimento
+    container_name: api-event-flow-v2
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      NODE_ENV: development
+    command: npm run start:dev
