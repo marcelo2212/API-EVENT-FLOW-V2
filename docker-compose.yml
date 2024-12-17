@@ -1,15 +1,17 @@
-version: "3.9"
+version: '3.8'
+
 services:
-  api-event-flow-v2:
-    build:
-      context: .
-      dockerfile: Dockerfile # ou Dockerfile.dev para desenvolvimento
-    container_name: api-event-flow-v2
+  postgres:
+    image: postgres:15
+    container_name: postgres_nestjs
     ports:
-      - "3000:3000"
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - '5432:5432'
     environment:
-      NODE_ENV: development
-    command: npm run start:dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestjs_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

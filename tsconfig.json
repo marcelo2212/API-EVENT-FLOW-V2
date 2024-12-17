@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",         // Certifique-se de apontar para o diretório correto
+    "outDir": "./dist",         // Diretório de saída para o build
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,25 +1,22 @@
-# Use a imagem base do Node.js 22
+# Use a imagem base do Node.js
 FROM node:22-alpine
 
-# Configure variáveis de ambiente padrão
-ENV NODE_ENV=production
+# Configure o diretório de trabalho
+WORKDIR /app
 
-# Defina o diretório de trabalho
-WORKDIR /usr/src/app
-
-# Copie apenas os arquivos de dependência para aproveitar o cache do Docker
+# Copie os arquivos de dependências para o container
 COPY package*.json ./
 
-# Instale as dependências de produção
-RUN npm install --only=production
+# Instale as dependências do projeto
+RUN npm install
 
-# Copie o restante do projeto
+# Copie o restante dos arquivos para o container
 COPY . .
 
-# Compile o código TypeScript para JavaScript
+# Compile o projeto (necessário se usar TypeScript)
 RUN npm run build
 
-# Exponha a porta padrão do NestJS
+# Exponha a porta padrão
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
